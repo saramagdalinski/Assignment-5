@@ -1,0 +1,44 @@
+\documentclass[12pt]{article}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+
+\newcommand{\Name}[1]{\noindent \textbf{Name:} #1 \\}
+\newcommand{\Workedwith}[1]{\noindent \textbf{Worked with:} #1 \\}
+\newcommand{\Problem}[3]{\mbox{} \newline \noindent \textbf{\textbf{Problem #1: #2 [#3 Points] \\ }}}
+
+
+\begin{document}
+
+\begin{center}
+  \bf
+  Algorithms \\
+  CMPT 307 D200 \\
+  Spring 2024 \\
+  \rm
+  Homework 5\\
+  Due:  Sunday, Mar 31 at 10:00 PM \\
+\end{center}
+
+\Name{Your name here}
+\Workedwith{Everyone you worked with here}
+
+\Problem{1}{Count all unweighted distinct shortest paths}{15}
+
+On unweighted graphs, we define a shortest path from vertices $u$ to $v$ to be the path from $u$ to $v$ with the fewest edges traversed.
+Often there are multiple shortest paths between two nodes of a graph. Give a linear-time algorithm ($O(m + n)$) for the following task:
+
+\textit{Input:} Undirected unweighted graph $G = (V, E)$; nodes $u, v \in V$.
+
+\textit{Output:} The number of distinct shortest paths from $u$ to $v$.
+
+(Hint: is there some way you can think to modify BFS to count shortest paths, rather than just finding shortest paths in an unweighted graph?)
+
+\textbf{Solution:}
+% SOLUTION GOES HERE
+
+
+\end{document}

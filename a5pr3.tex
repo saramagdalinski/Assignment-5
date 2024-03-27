@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+
+\newcommand{\Name}[1]{\noindent \textbf{Name:} #1 \\}
+\newcommand{\Workedwith}[1]{\noindent \textbf{Worked with:} #1 \\}
+\newcommand{\Problem}[3]{\mbox{} \newline \noindent \textbf{\textbf{Problem #1: #2 [#3 Points] \\ }}}
+
+
+\begin{document}
+
+\begin{center}
+  \bf
+  Algorithms \\
+  CMPT 307 D200 \\
+  Spring 2024 \\
+  \rm
+  Homework 5\\
+  Due:  Sunday, Mar 31 at 10:00 PM \\
+\end{center}
+
+\Name{Your name here}
+\Workedwith{Everyone you worked with here}
+
+\Problem{3}{Fast Flights}{20}
+
+You are working for unAmerican Airlines, and they would like to build a new app called ``Fast Flights'' that offers flyers the fastest possible route from a given starting city to a destination city, with an extra cool feature that is currently not offered on any other service. Fast Flights has the daily schedules of all unAmerican non-stop flights on the planet, where each flight is specified by a starting city, destination city, departure time, and arrival time.  All times are specified in Coordinated Universal Time for uniformity.
+
+A passenger specifies her starting city, destination city, and a rational number greater than or equal to 1 called the \emph{layover penalty.}  For example, if a layover between two flights is 60 minutes and the layover penalty is $1.5$, this means that the layover should be treated as being $60 \times 1.5 = 90$ minutes.  The layover penalty effectively indicates how much a passenger dislikes intermediate hops.  The system returns the door-to-door duration of the shortest route (which includes, of course, the layover penalty for each layover).  That layover penalty is the shiny new feature!
+
+Assume that there are $n$ cities and that there is some constant $C$ such that each city has at most $C$ incoming and $C$ outgoing flights per day.  Assume that this directed graph is represented as an adjacency list where each edge has an associated ordered pair $(\delta, \alpha)$ where $\delta$ is the departure time and $\alpha$ is the arrival time, both specified in Shmorbodian Standard Time.  So $\alpha - \delta$ is the duration of that flight.
+
+Your task is to (1) describe the fastest possible algorithm that you can for solving the problem of finding the fastest route between one given pair of cities and (2) give its asymptotic worst-case running time as a function of $n$ and $C$.  Rather than developing a new algorithm, you should construct a \emph{new graph} that you can then give to an existing graph algorithm.
+You should describe how this new graph is constructed, which existing graph algorithm you will use to achieve the best running time, and finally, analyze the running time of the algorithm (don't forget to consider the time required to build the new graph from the existing one).
+
+Hint: Does your algorithm from problem 2 help with this problem?
+
+\textbf{Solution:}
+% SOLUTION GOES HERE
+
+
+\end{document}

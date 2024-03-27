@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{enumerate}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+
+\newcommand{\Name}[1]{\noindent \textbf{Name:} #1 \\}
+\newcommand{\Workedwith}[1]{\noindent \textbf{Worked with:} #1 \\}
+\newcommand{\Problem}[3]{\mbox{} \newline \noindent \textbf{\textbf{Problem #1: #2 [#3 Points] \\ }}}
+
+
+\begin{document}
+
+\begin{center}
+  \bf
+  Algorithms \\
+  CMPT 307 D200 \\
+  Spring 2024 \\
+  \rm
+  Homework 5\\
+  Due:  Sunday, Mar 31 at 10:00 PM \\
+\end{center}
+
+\Name{Your name here}
+\Workedwith{Everyone you worked with here}
+
+\Problem{2}{Directed Acyclic Graph shortest path}{15}
+
+Using the Bellman-Ford algorithm, we can compute the single source shortest path tree in time $O(mn)$.
+If we have no negative edge weights, we can improve that runtime using Dijkstra's algorithm down to $O(n + m \log m)$.
+If we have a directed acyclic graph (potentially even with negative edge weights), we can do even better.
+In fact, we can solve this problem in $O(m + n)$ time.
+
+Describe an algorithm that, given a directed acyclic graph $G = (V, E)$ and a vertex $v$, computes the shortest path to every vertex in the graph.
+Similar to Dijkstra's algorithm, it should compute two arrays, both of size $n$, one that holds the minimum distance to a given node, and the other that holds the previous element on the shortest path.
+
+Hint 1: Topological sort works on DAGs, fits within the runtime given, and might come in handy here!
+
+Hint 2: Dijkstra's has a high runtime in part because we have to use a priority queue to determine the order to visit nodes. It also struggles with negative edge weights because we haven't necessarily solidified the min weight to all vertices that feed in to a given node. Can topological sort help with these issues?
+
+\textbf{Solution:}
+% SOLUTION GOES HERE
+
+
+\end{document}
