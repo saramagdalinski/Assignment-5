@@ -23,8 +23,8 @@
   Due:  Sunday, Mar 31 at 10:00 PM \\
 \end{center}
 
-\Name{Your name here}
-\Workedwith{Everyone you worked with here}
+\Name{Sara Magdalinski}
+\Workedwith{N/A}
 
 \Problem{2}{Directed Acyclic Graph shortest path}{15}
 
@@ -40,8 +40,15 @@ Hint 1: Topological sort works on DAGs, fits within the runtime given, and might
 
 Hint 2: Dijkstra's has a high runtime in part because we have to use a priority queue to determine the order to visit nodes. It also struggles with negative edge weights because we haven't necessarily solidified the min weight to all vertices that feed in to a given node. Can topological sort help with these issues?
 
-\textbf{Solution:}
-% SOLUTION GOES HERE
+\textbf{Solution:}\\
+
+We start by initializing two arrays, distance and previous, of size n (the number of vertices). We will set all distances to infinity (), except the distance from v to itself, which is 0. Set all previous vertices to None.\\
+
+We then need to perform a topological sort on the directed acyclic graph. \\
+
+After this topological sort is performed, for each vertex u $ \in$ V where V is the vertex set of the topologically sorted graph we will need to update distance[] and previous[] for all values of u's adjacent vertices. Lets say u has an adjacent vertex v. If the distance of v through u is less than the current distance[v] we need to update distance[v] to be the new distance we found and we will set previous[v] to be u. We can return the arrays distance[] and previous[]. \\
+
+This algorithm is effective as when a graph is topologically sorted all of the edges will point to a further vertex ensuring that once we have dealt with a vertex there is no possible shorter path. This fact, along with the acyclic property of the graph, allows for the inclusion of negative edge weights. The running time for this algorithm can be calculated as follows (letting m = number of edges and n = number of vertices). Topological sort : O(m + n), array initializations: O(n) + O(n), updating distance and previous array: O(m). This provides an overall running time of O(m + n) (simplified using big-O rules).
 
 
 \end{document}

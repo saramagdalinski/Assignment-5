@@ -23,8 +23,8 @@
   Due:  Sunday, Mar 31 at 10:00 PM \\
 \end{center}
 
-\Name{Your name here}
-\Workedwith{Everyone you worked with here}
+\Name{Sara Magdalinski}
+\Workedwith{N/A}
 
 \Problem{1}{Count all unweighted distinct shortest paths}{15}
 
@@ -38,7 +38,20 @@ Often there are multiple shortest paths between two nodes of a graph. Give a lin
 (Hint: is there some way you can think to modify BFS to count shortest paths, rather than just finding shortest paths in an unweighted graph?)
 
 \textbf{Solution:}
-% SOLUTION GOES HERE
+
+We will use a modified version of BFS to get the number of shortest paths from vertex u to vertex v on the undirected unweighted graph G. In doing so we will calculate the number of shortest paths between u and every other vertex in the graph. For every node we will need to store both distance (representing the length of the shortest path from the source to the current one) and 
+numPaths (representing the number of these shortest paths).
+Initially, the distance value for all nodes is infinity except the source node equal to 0 (this is the case for the path from any node back to itself). Also, the numPaths value for all nodes is 0 except the source node equal to 1 (a node has one shortest path to itself). We then need to traverse the graph using BFS. \\
+
+Each time when we want to add a neighbour of the current node to the queue, we have two cases...\\
+
+If the distance value of the neighbour is greater than the distance value of the current node plus one, this indicates we found a shorter path from the source node to the neighbour node. We then change the neighbour node’s distance value to be equal to the current node distance plus one. In addition, the numPaths value for the neighbour node will be updated to be equal to the  numPaths value of the current node.\\
+
+If the distance of the neigbour node is equal to the distance of the current node plus one that means all the shortest paths that go from the source node to the current node will be added to the number of shortest paths of the child node. This is because they will all have the same length as the shortest path of the neighbour node after adding the edge that connects current with its neighbour. We will keep keep the distance value of the neighbour node the same but increase the numPaths value of the neighbour node by the numPaths value of the current node.\\
+
+After the entire traversal the numPaths value of the v node will have the number of shortest paths that go from the source node u to the destination node v. Also, the distance value of the v node will have the length of the shortest path that goes from u to v. We know that this algorithm will work as we have know the BFS algorithm works correctly.\\
+
+The time complexity of this approach is O(m + n), the same as the BFS time complexity where n is the number of nodes and m is the number of edges. This is because we iterate over each node and each edge only once.\\
 
 
 \end{document}

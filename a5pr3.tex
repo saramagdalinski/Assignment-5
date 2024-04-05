@@ -23,8 +23,8 @@
   Due:  Sunday, Mar 31 at 10:00 PM \\
 \end{center}
 
-\Name{Your name here}
-\Workedwith{Everyone you worked with here}
+\Name{Sara Magdalinski}
+\Workedwith{N/A}
 
 \Problem{3}{Fast Flights}{20}
 
@@ -39,8 +39,17 @@ You should describe how this new graph is constructed, which existing graph algo
 
 Hint: Does your algorithm from problem 2 help with this problem?
 
-\textbf{Solution:}
-% SOLUTION GOES HERE
+\textbf{Solution:}\\
+Constructing the graph: We are given a graph G(V,E) where V is the vertex set consisting of the cities which is size n and E is the edge set with a size of at most n * c. We will create a new graph called G'(V',E') where for each city (i.e each vertex in V) we will construct a new graph. This will be a bipartite graph G''(V'' = A $\cup$ B, E'') where A is set of incoming flights into that city and B is the set of outgoing flights from that city. Vertices in A and B will be connected by a directed edge from A to B when the outgoing flight from B departs after the incoming flight from A arrives. The weight of this edge will be the calculated layover time * layover penalty (i.e (vertex in B's departure time - vertex in A's arrival time) * layover penalty). These n bipartite graphs will be connected based upon the flights connecting the two cities.  Each outgoing flight from each city will be represented with a directed edge to a vertex in A of another G'' graph. The weight of these edges will be the duration of the specific flight (arrival time - departure time). After cycling through these steps for each city and each flight the overall edge set will be completed.\\
 
+Which algorithm to use: An optimal algorithm to use for this problem is the one constructed for question 2 of this assignment which works for the category of directed acyclic graphs, which this graph falls into. Please see question 2 for a more detailed description of this algorithm. Using this algorithm can provide us with the fastest route from a starting city into a destination city. The distance array will be of size n where n is the number of cities and all values will be set to 0 except for distance[s] = 0 which sets our starting city s to 0. The previous array will be size n as well and will track the flights taken along the fast route, previous[s] will be set to null as we did not take a flight to get to the starting city. For each vertex v in V with V being the vertex set of the topologically sorted graph distance[v] and previous[v] will need to be updated. An incoming flight can be connect to at most C outgoing flights. We can calculate the time by taking the layover time * layover penalty + duration of flight to next city (at which we will repeat this calculation until we have a solution). If the current distance to an adjacent vertex x through v is less than distance[x] we will update distance[x] to be this new distance and we will set previous[x] to u. The distance and previous arrays will be returned and distance[e] will contain the fastest time to get from s to e where e is the end destination. The previous array will provide the flights taken along this route.\\
+
+Time Efficiency: \\
+
+Constructing Graph: We will iterate through all n vertices of the original graph where for each of the n vertices at most 2C vertices are added. This will take O(n * 2C) time since we need to input the times of the flights for these 2c flights. We need to connect the incoming and outgoing flights (to figure out layovers) for each city, since there are at most C incoming flights and at most C outgoing flights this will take O(n * 2C) time. To connect cities together we will consider outgoing flights. Each city has at most C outgoing flights so this takes O(n * C) time. This accounts for incoming flights as well since an outgoing flight from one city will be an incoming flight to another. Therefore, to construct the graph it will take O(n * 2C) + O(n * $C^2$) + O(n * C) time which equals O(n * $C^2$).\\
+
+Running Algorithm from Problem 2: The algorithm we used takes O(m + n) time where m is the number of edges and n is the number of vertices. The graph we created has at most 2NC vertices as for each of the n cities we are adding at most 2C vertices. There will be at most $c^2$ edges within each cities graph as each of the C incoming flights could at most connect to each of the C outgoing flights. There will also be at most C outgoing edges from each city (incoming are considered as they are outgoing flights from another city). This gives us a total of at most n($C^2$ + c) edges = $nC^2 + nC$ edges. So to run the algorithm from problem 2 we will have a time efficiency in the worst case of O(2NC + $nC^2 + nC$) = O(n$C^2$).\\
+
+This brings the overall runtime to solve this problem to O(n$C^2$ + n$C^2$) = O(n$C^2$)
 
 \end{document}

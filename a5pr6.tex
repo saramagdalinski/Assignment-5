@@ -23,8 +23,8 @@
   Due:  Sunday, Mar 31 at 10:00 PM \\
 \end{center}
 
-\Name{Your name here}
-\Workedwith{Everyone you worked with here}
+\Name{Sara Magdalinski}
+\Workedwith{Nicholas Tait}
 
 \Problem{6}{Bonus Problem! Digital Circuits}{25}
 
@@ -114,7 +114,25 @@ You should solve this in 4 steps:
 
 \textbf{Solution:}
 
-Your solution goes here.
+\begin{enumerate}
+    \item We will figure out which nodes are relevant for determining the contamination and propagation delay by performing a DFS on the directed weighted graph we are provided. We will travel from the given register back until we reach all of the previous registers that are connected. We can determine these stopping points using the IsRegister(u) function for each node u we visit. Any nodes in between these registers need to be considered. \\
+    
+    \item We will build one graph for calculating the contamination delay, with the weights consisting of the respective contamination delays, and one graph for calculating the propagation delay with the edges containing the corresponding propagation delays found using the corresponding functions. We will add these values to the already existing delay found on the wires/edges. These will consist of the nodes found in the MWST constructed using DFS in step 1. Note that edges will be going in the opposite direction of the original graph. \\
+    
+    \item We can use Dijkstra's algorithm on each of the two graphs to find the shortest paths to all the other nodes in the graph from the register we are given. For contamination delay, we need to find the shortest path. We will take the minimum value of all of the shortest paths in the contamination delay path to the connecting registers. For the propagation delay we need to find the longest path through the circuit. We can do this by taking the maximum value of all the shortest paths in the propagation delay graph. \\
+
+    \item The running time consists of the DFS, building the two graphs, running Dijkstra's twice, and computing the contamination and propagation delays.\\
+
+    DFS: O(n+m) where n is vertices, m is edges.\\
+
+    Building two graphs: O(n + m) each \\
+
+    Dijkstra's: O(m + nlogn) each\\
+
+    Overall calculation of contamination and propagation: This will be smaller than other values so it will not impact the running time.\\
+
+    OVERALL RUNNING TIME: O(m + nlogn)
+\end{enumerate}
 
 \bigbreak
 \bigbreak
